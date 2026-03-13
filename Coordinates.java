@@ -1,3 +1,8 @@
+/*
+ * The Coordinates class is used to store a single whole position on the cartesian plane.
+ * We use it to store the positions of shapes, and the vertices of a triangles as well.
+*/
+
 public class Coordinates {
     private int x;
     private int y;
