@@ -41,12 +41,9 @@ public class Rectangle extends Shape {
                 this.length *= -factor;
 
                 super.setCoordinates(new Coordinates(
-                    super.getCoordinates().getX() * factor,
-                    super.getCoordinates().getY() * factor
+                    super.getCoordinates().getX() * factor - width,
+                    super.getCoordinates().getY() * factor - length
                 ));
-
-                // because we want the corner to be the top-left, and scaling negatively puts it on the other (wrong) side of ther rectangle.
-                super.translate(-width, -length);
             }
 
             if (factor == 0) {
@@ -72,11 +69,9 @@ public class Rectangle extends Shape {
                 this.length /= -factor;
 
                 super.setCoordinates(new Coordinates(
-                    super.getCoordinates().getX() / factor,
-                    super.getCoordinates().getY() / factor
+                    super.getCoordinates().getX() / factor - width,
+                    super.getCoordinates().getY() / factor - length
                 ));
-
-                super.translate(-width, -length);
             }
 
             if (factor == 0) {
