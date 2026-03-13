@@ -1,21 +1,21 @@
 public class ShapeManagement {
     public static void main(String[] args) {
-        Square testSquare = new Square(2, new Coordinates(2, 2));
-        System.out.println(testSquare.display());
+        Circle testCircle = new Circle();
+        System.out.println(testCircle.display());
 
-        testSquare.translate(2, -2);
-        System.out.println(testSquare.display());
+        testCircle.translate(1, 1);
+        System.out.println(testCircle.display());
 
-        testSquare.scale(2, true);
-        System.out.println(testSquare.display());
+        testCircle.scale(2, true);
+        System.out.println(testCircle.display());
 
-        testSquare.scale(-2, false);
-        System.out.println(testSquare.display());
+        testCircle.scale(-2, false);
+        System.out.println(testCircle.display());
 
         try {
-            testSquare.scale(0, false);
+            testCircle.scale(0, false);
         } catch (ArithmeticException e) {
-            System.out.println("Arithmetic exc: " + e.getMessage());
+            System.out.println(e.getClass().getCanonicalName() + ": "+ e.getMessage());
         }
     }
 }
