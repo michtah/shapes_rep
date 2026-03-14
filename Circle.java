@@ -19,7 +19,7 @@ public class Circle extends Shape {
     
 
     @Override
-    void scale(int factor, boolean sign) {
+    public void scale(int factor, boolean sign) {
         if (sign) {
             if (factor > 0) {
                 this.radius *= factor;
@@ -67,17 +67,17 @@ public class Circle extends Shape {
     }
 
     @Override
-    double getArea() {
+    public double getArea() {
         return 3.14159265358979323 * this.radius * this.radius;
     }
 
     @Override
-    double getPerimeter() {
+    public double getPerimeter() {
         return 6.28318530717958647 * this.radius;
     }
 
     @Override
-    String display() {
+    public String display() {
         return "Circle at: " + this.getCoordinates().display() + ". Radius: " + this.radius;
     }
 }

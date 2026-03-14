@@ -22,9 +22,7 @@ public class Rectangle extends Shape {
     }
 
     @Override
-    void scale(int factor, boolean sign) {
-        // TODO Auto-generated method stub
-        
+    public void scale(int factor, boolean sign) {
         if (sign) {
             if (factor > 0) {
                 this.width *= factor;
@@ -81,17 +79,17 @@ public class Rectangle extends Shape {
     }
 
     @Override
-    double getArea() {
+    public double getArea() {
         return this.width * this.length;
     }
 
     @Override
-    double getPerimeter() {
+    public double getPerimeter() {
         return (this.width + this.length) * 2;
     }
 
     @Override
-    String display() {
+    public String display() {
         return "Rectangle at " + super.getCoordinates().display() + ". Width: " + this.width + ", Length: " + this.length;
     }
 }

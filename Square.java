@@ -18,7 +18,7 @@ public class Square extends Shape {
 
 
     @Override
-    void scale(int factor, boolean sign) {
+    public void scale(int factor, boolean sign) {
         if (sign) {
             if (factor > 0) {
                 this.side *= factor;
@@ -66,17 +66,17 @@ public class Square extends Shape {
     }
 
     @Override
-    double getArea() {
+    public double getArea() {
         return side*side;
     }
 
     @Override
-    double getPerimeter() {
+    public double getPerimeter() {
         return 4*side;
     }
 
     @Override
-    String display() {
+    public String display() {
         return "Square at " + super.getCoordinates().display() + ". Side length: " + this.side;
     }
 }
