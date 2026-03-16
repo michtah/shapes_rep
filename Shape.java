@@ -1,47 +1,43 @@
+/*
+ * The shape class is the parent of all shape types of the project. It stores the position of the object
+ * and the number of sides. 
+ */
+
 abstract class Shape {
-    /*
-     * The coordinates of a shape is the top-leftmost coordinate (one with the lowest values).
-     * Sides is how many sides a shape has.
-     * The coordinates are updated, and can change if the bounding box changes.
-     * For now, only scale() can do this.
-     */
     private Coordinates position;
     private int sides;
 
-
-    public Shape() {
-        this.sides = 3;
-        this.position = new Coordinates(0, 0);
+    // constructor for object. takes the number of sides and the coordinates.
+    public Shape(int noOfSides, Coordinates coord) {
+        this.position = coord;
+        this.sides = noOfSides;
     }
 
-    public Shape(Coordinates position, int sides) {
-        this.position = position;
-        this.sides = sides;
-    }
-
-    
-    public int getSides() {
-        return this.sides;
-    }
-
+    // gets the coordinates of the shape.
     public Coordinates getCoordinates() {
-        return this.position;
+        return position;
     }
 
-    public void setCoordinates(Coordinates position) {
-        this.position = position;
+    // gets the number of sides of the shape.
+    public int getSides() {
+        return sides;
     }
 
-    // move object.
+    // sets the coordinates of the shape.
+    public void setCoordinates(Coordinates newcoord) {
+        this.position = newcoord;
+    }
+
+    // translates shape (by calling Coordinates.translate on its position aspect)
     public void translate(int dx, int dy) {
         this.position.translate(dx, dy);
     }
+    // scales shape position (by calling Coordinates.scale on its position aspect)
+    public void scale(int factor, boolean sign) {
+        this.position.scale(factor, sign);
+    }
 
-    abstract void scale(int factor, boolean sign);
-
-    abstract double getArea();
-
-    abstract double getPerimeter();
-
-    abstract String display();
+    abstract double getArea(); // will get the area of shape
+    abstract double getPerimeter(); // will get perimeter of shape
+    abstract String display(); // will display information about the shape
 }
