@@ -2,94 +2,46 @@ public class Rectangle extends Shape {
     private int width;
     private int length;
 
-
-    public Rectangle() {
-        super(new Coordinates(0, 0), 4);
-        this.width = 1;
-        this.length = 1;
-    }
-
-    public Rectangle(int width, int length) {
-        super(new Coordinates(0, 0), 4);
-        this.width = width;
-        this.length = length;
-    }
-
+    // constructs rectangle from position, width, and length
     public Rectangle(int width, int length, Coordinates position) {
-        super(position, 4);
+        super(4, position);
         this.width = width;
         this.length = length;
     }
 
+    // gets area of rectangle (ab)
     @Override
-    public void scale(int factor, boolean sign) {
-        if (sign) {
-            if (factor > 0) {
-                this.width *= factor;
-                this.length *= factor;
-
-                super.setCoordinates(new Coordinates(
-                    super.getCoordinates().getX() * factor,
-                    super.getCoordinates().getY() * factor
-                ));
-            }
-
-            if (factor < 0) {
-                this.width *= -factor;
-                this.length *= -factor;
-
-                super.setCoordinates(new Coordinates(
-                    super.getCoordinates().getX() * factor - width,
-                    super.getCoordinates().getY() * factor - length
-                ));
-            }
-
-            if (factor == 0) {
-                this.width = 0;
-                this.length = 0;
-                super.setCoordinates(new Coordinates());
-            }
-        }
-
-        else {
-            if (factor > 0) {
-                this.width /= factor;
-                this.length /= factor;
-
-                super.setCoordinates(new Coordinates(
-                    super.getCoordinates().getX() / factor,
-                    super.getCoordinates().getY() / factor
-                ));
-            }
-
-            if (factor < 0) {
-                this.width /= -factor;
-                this.length /= -factor;
-
-                super.setCoordinates(new Coordinates(
-                    super.getCoordinates().getX() / factor - width,
-                    super.getCoordinates().getY() / factor - length
-                ));
-            }
-
-            if (factor == 0) {
-                throw new ArithmeticException("Cannot divide object scale by zero.");
-            }
-        }
-    }
-
-    @Override
-    public double getArea() {
+    double getArea() {
         return this.width * this.length;
     }
 
+    // gets perimeter of rectangle (2a+2b)
     @Override
-    public double getPerimeter() {
-        return (this.width + this.length) * 2;
+    double getPerimeter() {
+        return 2*this.width + 2*this.length;
     }
 
+    // scales rectangle side lengths and positions
     @Override
-    public String display() {
-        return "Rectangle at " + super.getCoordinates().display() + ". Width: " + this.width + ", Length: " + this.length;
+    public void scale(int factor, boolean sign) {
+        super.scale(factor, sign);
+        if (sign) {
+            this.width *= factor;
+            this.length *= factor;
+        }
+        else {
+            this.width /= factor;
+            this.length /= factor;
+        }
+    }
+
+    // displays information about rectangle
+    @Override
+    String display() {
+        return "Rectangle at: " + this.getCoordinates() +
+        "\nWidth: " + this.width +
+        "\nLength: " + this.length +
+        "\nArea: " + this.getArea() +
+        "\nPerimeter: " + this.getPerimeter();
     }
 }
