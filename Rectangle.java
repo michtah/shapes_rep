@@ -38,7 +38,7 @@ public class Rectangle extends Shape {
     // displays information about rectangle
     @Override
     String display() {
-        return "Rectangle at: " + this.getCoordinates() +
+        return "Rectangle at: " + this.getCoordinates().display() +
         "\nWidth: " + this.width +
         "\nLength: " + this.length +
         "\nArea: " + this.getArea() +

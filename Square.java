@@ -1,82 +1,38 @@
 public class Square extends Shape {
     private int side;
 
-    public Square() {
-        super(new Coordinates(), 4);
-        this.side = 1;
-    }
-
-    public Square(int side) {
-        super(new Coordinates(), 4);
-        this.side = side;
-    }
-
+    // construct square with side length and position
     public Square(int side, Coordinates position) {
-        super(position, 4);
+        super(4, position);
         this.side = side;
     }
 
+    // get area of square (a²)
+    @Override
+    double getArea() {
+        return side * side;
+    }
 
+    // get perimeter of square (4a)
+    @Override
+    double getPerimeter() {
+        return 4 * side;
+    }
+
+    // scale square: coordinates and side length
     @Override
     public void scale(int factor, boolean sign) {
-        if (sign) {
-            if (factor > 0) {
-                this.side *= factor;
-                super.setCoordinates(new Coordinates(
-                    super.getCoordinates().getX() * factor,
-                    super.getCoordinates().getY() * factor
-                ));
-            }
-
-            if (factor < 0) {
-                this.side *= -factor;
-                super.setCoordinates(new Coordinates(
-                    super.getCoordinates().getX() * factor - this.side,
-                    super.getCoordinates().getY() * factor - this.side
-                ));
-            }
-
-            if (factor == 0) {
-                this.side = 0;
-                super.setCoordinates(new Coordinates());
-            }
-        }
-
-        else {
-            if (factor > 0) {
-                this.side /= factor;
-                super.setCoordinates(new Coordinates(
-                    super.getCoordinates().getX() / factor,
-                    super.getCoordinates().getY() / factor
-                ));
-            }
-
-            if (factor < 0) {
-                this.side /= -factor;
-                super.setCoordinates(new Coordinates(
-                    super.getCoordinates().getX() / factor - this.side,
-                    super.getCoordinates().getY() / factor - this.side
-                ));
-            }
-
-            if (factor == 0) {
-                throw new ArithmeticException("Cannot divide scale by zero.");
-            }
-        }
+        super.scale(factor, sign);
+        if (sign) this.side *= factor;
+        else this.side /= factor;
     }
 
+    // display info about square
     @Override
-    public double getArea() {
-        return side*side;
-    }
-
-    @Override
-    public double getPerimeter() {
-        return 4*side;
-    }
-
-    @Override
-    public String display() {
-        return "Square at " + super.getCoordinates().display() + ". Side length: " + this.side;
+    String display() {
+        return "Rectangle at: " + this.getCoordinates().display() +
+        "\nSide length: " + this.side +
+        "\nArea: " + this.getArea() +
+        "\nPerimeter: " + this.getPerimeter();
     }
 }
