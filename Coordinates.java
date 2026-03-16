@@ -8,29 +8,21 @@ public class Coordinates {
     private int y;
 
 
-    public Coordinates() {
-        this.x = 0;
-        this.y = 0;
-    }
-
     public Coordinates(int x, int y) {
         this.x = x;
         this.y = y;
     }
 
-
     public int getX() {
-        return x;
+        return this.x;
     }
 
     public int getY() {
-        return y;
+        return this.y;
     }
+
     public double distance(Coordinates p) {
-        return Math.sqrt(
-            Math.pow(p.getX() - this.getX(), 2) +
-            Math.pow(p.getY() - this.getY(), 2)
-        );
+        return Math.sqrt((this.getX()-p.getX())*(this.getX()-p.getX())+(this.getY()-p.getY())*(this.getY()-p.getY()));
     }
 
     public void translate(int dx, int dy) {
@@ -44,11 +36,11 @@ public class Coordinates {
             this.y *= factor;
         } else {
             this.x /= factor;
-            this.y /= factor;
+            this.y *= factor;
         }
     }
 
     public String display() {
-        return "X: " + this.x + ", Y: " + this.y; 
+        return "X = " + this.x + ", Y = " + this.y;
     }
 }
