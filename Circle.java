@@ -1,83 +1,38 @@
 public class Circle extends Shape {
     private int radius;
 
-    public Circle() {
-        super(new Coordinates(), 1);
-        this.radius = 1;
-    }
-
-    public Circle(int radius) {
-        super(new Coordinates(), 1);
-        this.radius = radius;
-    }
-
+    // construct circle from position and radius. we let a circle have just one side.
     public Circle(int radius, Coordinates position) {
-        super(position, 1);
+        super(1, position);
         this.radius = radius;
     }
 
-    
+    // gets area using πr²
+    @Override
+    double getArea() {
+        return Math.PI * radius * radius;
+    }
 
+    // gets perimeter using 2πr
+    @Override
+    double getPerimeter() {
+        return 2 * Math.PI * radius;
+    }
+
+    // scales coordinates and radius
     @Override
     public void scale(int factor, boolean sign) {
-        if (sign) {
-            if (factor > 0) {
-                this.radius *= factor;
-                super.setCoordinates(new Coordinates(
-                    this.getCoordinates().getX() * factor,
-                    this.getCoordinates().getY() * factor
-                ));
-            }
-
-            if (factor < 0) {
-                this.radius *= -factor;
-                super.setCoordinates(new Coordinates(
-                    this.getCoordinates().getX() * factor - 2*radius,
-                    this.getCoordinates().getY() * factor - 2*radius
-                ));
-            }
-
-            if (factor == 0) {
-                this.radius = 0;
-                super.setCoordinates(new Coordinates());
-            }
-        }
-
-        else {
-            if (factor > 0) {
-                this.radius /= factor;
-                super.setCoordinates(new Coordinates(
-                    this.getCoordinates().getX() / factor,
-                    this.getCoordinates().getY() / factor
-                ));
-            }
-
-            if (factor < 0) {
-                this.radius /= -factor;
-                super.setCoordinates(new Coordinates(
-                    this.getCoordinates().getX() / factor - 2*radius,
-                    this.getCoordinates().getY() / factor - 2*radius
-                ));
-            }
-            
-            if (factor == 0) {
-                throw new ArithmeticException("Cannot divide scale by zero.");
-            }
-        }
+        super.scale(factor, sign);
+        if (sign) this.radius *= factor;
+        else this.radius /= factor;
     }
 
+    // displays some info about the circle
     @Override
-    public double getArea() {
-        return 3.14159265358979323 * this.radius * this.radius;
-    }
-
-    @Override
-    public double getPerimeter() {
-        return 6.28318530717958647 * this.radius;
-    }
-
-    @Override
-    public String display() {
-        return "Circle at: " + this.getCoordinates().display() + ". Radius: " + this.radius;
+    String display() {
+        return "Circle at: " + this.getCoordinates().display() +
+        "\nRadius: " + this.radius +
+        "\nArea: " + this.getArea() +
+        "\nPerimeter" + this.getPerimeter();
     }
 }
