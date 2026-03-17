@@ -34,7 +34,7 @@ public class Triangle extends Shape {
         p1.translate(dx, dy);
         p2.translate(dx, dy);
         p3.translate(dx, dy);
-        super.translate(dx, dy);
+        super.setCoordinates(p1);
     }
 
     // scales triangle by scaling p1, p2, and p3 (and the position of the parent shape property)

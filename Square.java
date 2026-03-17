@@ -30,7 +30,7 @@ public class Square extends Shape {
     // display info about square
     @Override
     String display() {
-        return "Rectangle at: " + this.getCoordinates().display() +
+        return "Square at: " + this.getCoordinates().display() +
         "\nSide length: " + this.side +
         "\nArea: " + this.getArea() +
         "\nPerimeter: " + this.getPerimeter();

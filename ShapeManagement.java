@@ -85,55 +85,41 @@ public class ShapeManagement {
         userShapes.addShape(userShape);
     }
 
-    // removes a shape, as long as it is in bounds. otherwise it prints an error message.
+    // removes a shape, as long as it is in that position. otherwise print no shape found.
     private static void removeShape() {
-        System.out.println("Enter x coordinate of shape: ");
-        int x = userScanner.nextInt();
-        System.out.println("Enter y coordinate of shape: ");
-        int y = userScanner.nextInt();
-        Coordinates userCoordinates = new Coordinates(x, y);
+        System.out.println("Enter shape position in list: ");
+        int userChoice = userScanner.nextInt();
 
-        for (int i = 0; i < userShapes.getNumberOfShapes(); i++) {
-            if (userShapes.getShape(i).getCoordinates().equals(userCoordinates)) {
-                userShapes.removeShape(i);
-                return;
-            }
+        try {
+            userShapes.removeShape(userChoice);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Invalid index.");
         }
-        System.out.println("No such shape found.");
     }
 
     // displays one shape in the user list.
     private static void displayOneShape() {
-        System.out.println("Enter x coordinate of shape: ");
-        int x = userScanner.nextInt();
-        System.out.println("Enter y coordinate of shape: ");
-        int y = userScanner.nextInt();
-        Coordinates userCoordinates = new Coordinates(x, y);
+        System.out.println("Enter shape position in list: ");
+        int userChoice = userScanner.nextInt();
 
-        for (int i = 0; i < userShapes.getNumberOfShapes(); i++) {
-            if (userShapes.getShape(i).getCoordinates().equals(userCoordinates)) {
-                System.out.println(userShapes.getShape(i).display());
-                return;
-            }
+        try {
+            System.out.println("\n------\n" + userShapes.getShape(userChoice).display() + "\n------\n");
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Invalid index.");
         }
-        System.out.println("No such shape found.");
     }
 
-    // displays area and perimeter information about one shape in the user list. gets shape by coordinates
+    // displays area and perimeter information about one shape in the user list.
     private static void displayOnePerimeterArea() {
-        System.out.println("Enter x coordinate of shape: ");
-        int x = userScanner.nextInt();
-        System.out.println("Enter y coordinate of shape: ");
-        int y = userScanner.nextInt();
-        Coordinates userCoordinates = new Coordinates(x, y);
+        System.out.println("Enter shape position in list: ");
+        int userChoice = userScanner.nextInt();
 
-        for (int i = 0; i < userShapes.getNumberOfShapes(); i++) {
-            if (userShapes.getShape(i).getCoordinates().equals(userCoordinates)) {
-                System.out.println("Area: " + userShapes.getShape(i).getArea() + "\nPerimeter: " + userShapes.getShape(i).getPerimeter());
-                return;
-            }
+        try {
+            Shape userShape = userShapes.getShape(userChoice);
+            System.out.println("Area: " + userShape.getArea() + "\nPerimeter: " + userShape.getPerimeter());
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Invalid index.");
         }
-        System.out.println("No such shape found.");
     }
 
     // displays all shapes in the user list.
@@ -189,7 +175,7 @@ public class ShapeManagement {
                     break;
             }
             System.out.println(
-                "Enter command:\n\t1: Add a shape\n\t2: Remove shape (using coordinates)\n\t3: Info about one shape (using index)\n\t4: Get perimeter and area (using coordinates)\n\t5: Display all shapes\n\t6: Translate all shapes\n\t7: Scale all shapes\n\t0: Quit loop"
+                "Enter command:\n\t1: Add a shape\n\t2: Remove shape\n\t3: Info about one shape\n\t4: Get perimeter and area\n\t5: Display all shapes\n\t6: Translate all shapes\n\t7: Scale all shapes\n\t0: Quit loop"
             );
             userInput = userScanner.nextInt();
         }

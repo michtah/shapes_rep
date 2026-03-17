@@ -64,7 +64,7 @@ public class ShapeList {
     public String display() {
         String outString = "";
         for (Shape shape : listofShapes) {
-            outString += shape.display() + "\n------\n";
+            outString += "\n-------\n" + shape.display() + "\n------\n";
         }
         return outString;
     }
