@@ -28,7 +28,7 @@ public class Triangle extends Shape {
         );
     }
 
-    // translates triangle by translating p1, p2, and p3 (as well as the position of the parent shape properties).
+    // translates triangle by translating p1, p2, and p3 (as well as the position of the parent shape properties)
     @Override
     public void translate(int dx, int dy) {
         p1.translate(dx, dy);
