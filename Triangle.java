@@ -41,7 +41,6 @@ public class Triangle extends Shape {
     @Override
     public void scale(int factor, boolean sign) {
         super.scale(factor, sign);
-        p1.scale(factor, sign);
         p2.scale(factor, sign);
         p3.scale(factor, sign);
     }

@@ -1,7 +1,9 @@
-a little shapes repository for java.
+Shapes repository for java.
 
-## Files Description
+# CONTENTS
+* All the java files contain the code.
+* readme.md is the information file you are reading right now.
+* Report.pdf is the report.
+* Shapes-uml.png is the UML Diagram.
 
-* readme.md : the file you are reading right now
-* shapes-uml.pdn : the paintDotNet file for my work. will not work unless you have Paint.NET
-* shapes-uml.png : the UML diagram I made for the project.
+*The rest are simply extra files used to make the main files.*
